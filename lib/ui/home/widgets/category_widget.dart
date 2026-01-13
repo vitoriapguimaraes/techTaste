@@ -17,7 +17,7 @@ class CategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: isSelected ? AppColors.mainColor.withOpacity(0.2) : AppColors.cardColor,
+      color: isSelected ? AppColors.mainColor.withValues(alpha: 0.2) : AppColors.cardColor,
       borderRadius: BorderRadius.circular(16.0),
       elevation: isSelected ? 4.0 : 2.0,
       child: InkWell(
