@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_taste/ui/_core/app_colors.dart';
+import 'package:tech_taste/ui/_core/app_text_styles.dart';
 
 class CategoryWidget extends StatelessWidget {
   final String category;
@@ -7,28 +8,39 @@ class CategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        color: AppColors.lightBackgroundColor,
-        borderRadius: BorderRadius.circular(12.0),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 8.0,
-        children: [
-          Image.asset(
-            "assets/categories/${category.toLowerCase()}.png",
-            height: 48,
+    return Material(
+      color: AppColors.cardColor,
+      borderRadius: BorderRadius.circular(16.0),
+      elevation: 2.0,
+      child: InkWell(
+        onTap: () {
+          // TODO: Implementar filtro por categoria
+        },
+        borderRadius: BorderRadius.circular(16.0),
+        child: Container(
+          width: 100,
+          height: 100,
+          padding: EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: 8.0,
+            children: [
+              Image.asset(
+                "assets/categories/${category.toLowerCase()}.png",
+                height: 48,
+              ),
+              Text(
+                category,
+                style: AppTextStyles.bodySecondary.copyWith(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
           ),
-          Text(
-            category,
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-          ),
-        ],
+        ),
       ),
     );
   }
