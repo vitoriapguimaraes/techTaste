@@ -8,6 +8,7 @@ import 'package:tech_taste/ui/_core/widgets/appbar.dart';
 import 'package:tech_taste/ui/home/widgets/category_widget.dart';
 import 'package:tech_taste/ui/home/widgets/restaurant_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:tech_taste/ui/_core/widgets/web_constrained_box.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -64,6 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     RestaurantData restaurantData = Provider.of<RestaurantData>(context);
@@ -73,163 +75,166 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       drawer: Drawer(),
       appBar: getAppBar(context: context),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: SingleChildScrollView(
-          child: Column(
-            spacing: 24.0,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Logo
-              Center(child: Image.asset('assets/logo.png', width: 147)),
-              
-              // Boas-vindas
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 8.0,
-                children: [
-                  Text("Olá! 👋", style: AppTextStyles.h1),
-                  Text(
-                    "O que você gostaria de comer hoje?",
-                    style: AppTextStyles.bodySecondary,
-                  ),
-                ],
-              ),
-              
-              // Campo de busca
-              TextField(
-                controller: _searchController,
-                onChanged: (value) {
-                  setState(() {
-                    searchQuery = value;
-                  });
-                },
-                decoration: InputDecoration(
-                  hintText: "Buscar restaurantes ou pratos...",
-                  prefixIcon: Icon(Icons.search),
-                  suffixIcon: searchQuery.isNotEmpty
-                      ? IconButton(
-                          icon: Icon(Icons.clear),
-                          onPressed: () {
-                            setState(() {
-                              searchQuery = "";
-                              _searchController.clear();
-                            });
-                          },
-                        )
-                      : null,
-                  filled: true,
-                  fillColor: Color(0xFF343541),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16.0),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 20.0,
-                    vertical: 16.0,
-                  ),
-                ),
-              ),
-              
-              // Categorias
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 16.0,
-                children: [
-                  Text("Escolha por categoria", style: AppTextStyles.h3),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      spacing: 12.0,
-                      children: List.generate(
-                        CategoriesData.listCategories.length,
-                        (index) {
-                          final category = CategoriesData.listCategories[index];
-                          return CategoryWidget(
-                            category: category,
-                            isSelected: selectedCategory == category,
-                            onTap: () {
-                              setState(() {
-                                if (selectedCategory == category) {
-                                  selectedCategory = null;
-                                } else {
-                                  selectedCategory = category;
-                                }
-                              });
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              
-              // Banner promocional
-              ClipRRect(
-                borderRadius: BorderRadius.circular(16.0),
-                child: Image.asset("assets/banners/banner_promo.png"),
-              ),
-              
-              // Indicador de filtros ativos
-              if (hasActiveFilters)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: WebConstrainedBox(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          child: SingleChildScrollView(
+            child: Column(
+              spacing: 24.0,
+              // ... rest of the build method unchanged
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Logo
+                Center(child: Image.asset('assets/logo.png', width: 147)),
+                
+                // Boas-vindas
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 8.0,
                   children: [
+                    Text("Olá! 👋", style: AppTextStyles.h1),
                     Text(
-                      "${filteredRestaurants.length} ${filteredRestaurants.length == 1 ? 'restaurante encontrado' : 'restaurantes encontrados'}",
+                      "O que você gostaria de comer hoje?",
                       style: AppTextStyles.bodySecondary,
                     ),
-                    TextButton.icon(
-                      onPressed: clearFilters,
-                      icon: Icon(Icons.clear, size: 16.0),
-                      label: Text("Limpar filtros"),
-                      style: TextButton.styleFrom(
-                        foregroundColor: AppColors.mainColor,
+                  ],
+                ),
+                
+                // Campo de busca
+                TextField(
+                  controller: _searchController,
+                  onChanged: (value) {
+                    setState(() {
+                      searchQuery = value;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Buscar restaurantes ou pratos...",
+                    prefixIcon: Icon(Icons.search),
+                    suffixIcon: searchQuery.isNotEmpty
+                        ? IconButton(
+                            icon: Icon(Icons.clear),
+                            onPressed: () {
+                              setState(() {
+                                searchQuery = "";
+                                _searchController.clear();
+                              });
+                            },
+                          )
+                        : null,
+                    filled: true,
+                    fillColor: Color(0xFF343541),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                      vertical: 16.0,
+                    ),
+                  ),
+                ),
+                
+                // Categorias
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 16.0,
+                  children: [
+                    Text("Escolha por categoria", style: AppTextStyles.h3),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        spacing: 12.0,
+                        children: List.generate(
+                          CategoriesData.listCategories.length,
+                          (index) {
+                            final category = CategoriesData.listCategories[index];
+                            return CategoryWidget(
+                              category: category,
+                              isSelected: selectedCategory == category,
+                              onTap: () {
+                                setState(() {
+                                  if (selectedCategory == category) {
+                                    selectedCategory = null;
+                                  } else {
+                                    selectedCategory = category;
+                                  }
+                                });
+                              },
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ],
                 ),
-              
-              // Restaurantes
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 16.0,
-                children: [
-                  if (!hasActiveFilters)
-                    Text("Bem avaliados ⭐", style: AppTextStyles.h3),
-                  
-                  // Lista de restaurantes ou estado vazio
-                  if (filteredRestaurants.isEmpty)
-                    _EmptySearchResults(onClearFilters: clearFilters)
-                  else
-                    Column(
-                      spacing: 12.0,
-                      children: List.generate(
-                        filteredRestaurants.length,
-                        (index) {
-                          Restaurant restaurant = filteredRestaurants[index];
-                          return RestaurantWidget(restaurant: restaurant);
-                        },
+                
+                // Banner promocional
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(16.0),
+                  child: Image.asset("assets/banners/banner_promo.png"),
+                ),
+                
+                // Indicador de filtros ativos
+                if (hasActiveFilters)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "${filteredRestaurants.length} ${filteredRestaurants.length == 1 ? 'restaurante encontrado' : 'restaurantes encontrados'}",
+                        style: AppTextStyles.bodySecondary,
                       ),
+                      TextButton.icon(
+                        onPressed: clearFilters,
+                        icon: Icon(Icons.clear, size: 16.0),
+                        label: Text("Limpar filtros"),
+                        style: TextButton.styleFrom(
+                          foregroundColor: AppColors.mainColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                
+                // Restaurantes
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 16.0,
+                  children: [
+                    if (!hasActiveFilters)
+                      Text("Bem avaliados ⭐", style: AppTextStyles.h3),
+                    
+                    // Lista de restaurantes ou estado vazio
+                    if (filteredRestaurants.isEmpty)
+                      _EmptySearchResults(onClearFilters: clearFilters)
+                    else
+                      Column(
+                        spacing: 12.0,
+                        children: List.generate(
+                          filteredRestaurants.length,
+                          (index) {
+                            Restaurant restaurant = filteredRestaurants[index];
+                            return RestaurantWidget(restaurant: restaurant);
+                          },
+                        ),
+                      ),
+                  ],
+                ),
+                
+                // Footer
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 24.0),
+                  child: Center(
+                    child: Text(
+                      "Desenvolvido por github.com/vitoriapguimaraes",
+                      style: AppTextStyles.caption.copyWith(fontSize: 11.0),
+                      textAlign: TextAlign.center,
                     ),
-                ],
-              ),
-              
-              // Footer
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 24.0),
-                child: Center(
-                  child: Text(
-                    "Desenvolvido por github.com/vitoriapguimaraes",
-                    style: AppTextStyles.caption.copyWith(fontSize: 11.0),
-                    textAlign: TextAlign.center,
                   ),
                 ),
-              ),
-              
-              SizedBox(height: 16.0),
-            ],
+                
+                SizedBox(height: 16.0),
+              ],
+            ),
           ),
         ),
       ),

@@ -6,102 +6,106 @@ import 'package:tech_taste/ui/_core/app_text_styles.dart';
 import 'package:tech_taste/ui/_core/bag_provider.dart';
 import 'package:tech_taste/ui/_core/widgets/appbar.dart';
 import 'package:provider/provider.dart';
+import 'package:tech_taste/ui/_core/widgets/web_constrained_box.dart';
 
 class RestaurantScreen extends StatelessWidget {
   final Restaurant restaurant;
   const RestaurantScreen({super.key, required this.restaurant});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: getAppBar(context: context, title: restaurant.name),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Header do restaurante
-            Container(
-              padding: EdgeInsets.all(24.0),
-              decoration: BoxDecoration(
-                color: AppColors.cardColor,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 8.0,
-                    offset: Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(16.0),
-                    child: Image.asset(
-                      'assets/${restaurant.imagePath}',
-                      width: 120,
-                      height: 120,
-                      fit: BoxFit.cover,
+      body: WebConstrainedBox(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Header do restaurante
+              Container(
+                padding: EdgeInsets.all(24.0),
+                decoration: BoxDecoration(
+                  color: AppColors.cardColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 8.0,
+                      offset: Offset(0, 2),
                     ),
-                  ),
-                  SizedBox(height: 16.0),
-                  Text(
-                    restaurant.description,
-                    style: AppTextStyles.bodySecondary,
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: 12.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 16.0,
-                    children: [
-                      // Avaliação
-                      Row(
-                        spacing: 4.0,
-                        children: [
-                          Icon(Icons.star, color: AppColors.mainColor, size: 20.0),
-                          Text(
-                            restaurant.stars.toString(),
-                            style: AppTextStyles.body.copyWith(
-                              fontWeight: FontWeight.w600,
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(16.0),
+                      child: Image.asset(
+                        'assets/${restaurant.imagePath}',
+                        width: 120,
+                        height: 120,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(height: 16.0),
+                    Text(
+                      restaurant.description,
+                      style: AppTextStyles.bodySecondary,
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 12.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      spacing: 16.0,
+                      children: [
+                        // Avaliação
+                        Row(
+                          spacing: 4.0,
+                          children: [
+                            Icon(Icons.star, color: AppColors.mainColor, size: 20.0),
+                            Text(
+                              restaurant.stars.toString(),
+                              style: AppTextStyles.body.copyWith(
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      // Distância
-                      Row(
-                        spacing: 4.0,
-                        children: [
-                          Icon(Icons.location_on, color: AppColors.textSecondary, size: 20.0),
-                          Text(
-                            "${restaurant.distance}km",
-                            style: AppTextStyles.body,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                          ],
+                        ),
+                        // Distância
+                        Row(
+                          spacing: 4.0,
+                          children: [
+                            Icon(Icons.location_on, color: AppColors.textSecondary, size: 20.0),
+                            Text(
+                              "${restaurant.distance}km",
+                              style: AppTextStyles.body,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-            
-            // Cardápio
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 16.0,
-                children: [
-                  Text("Cardápio 🍽️", style: AppTextStyles.h2),
-                  
-                  // Lista de pratos
-                  ...List.generate(restaurant.dishes.length, (index) {
-                    Dish dish = restaurant.dishes[index];
-                    return _DishCard(dish: dish);
-                  }),
-                ],
+              
+              // Cardápio
+              Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 16.0,
+                  children: [
+                    Text("Cardápio 🍽️", style: AppTextStyles.h2),
+                    
+                    // Lista de pratos
+                    ...List.generate(restaurant.dishes.length, (index) {
+                      Dish dish = restaurant.dishes[index];
+                      return _DishCard(dish: dish);
+                    }),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
