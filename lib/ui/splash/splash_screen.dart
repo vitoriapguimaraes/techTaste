@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/ui/_core/app_colors.dart';
-import 'package:myapp/ui/home/home_screen.dart';
+import 'package:tech_taste/ui/_core/app_colors.dart';
+import 'package:tech_taste/ui/home/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/model/dish.dart';
-import 'package:myapp/ui/_core/bag_provider.dart';
+import 'package:tech_taste/model/dish.dart';
+import 'package:tech_taste/ui/_core/bag_provider.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutScreen extends StatelessWidget {

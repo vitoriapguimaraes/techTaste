@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/data/categories_data.dart';
-import 'package:myapp/data/restaurant_data.dart';
-import 'package:myapp/model/restaurant.dart';
-import 'package:myapp/ui/_core/widgets/appbar.dart';
-import 'package:myapp/ui/home/widgets/category_widget.dart';
-import 'package:myapp/ui/home/widgets/restaurant_widget.dart';
+import 'package:tech_taste/data/categories_data.dart';
+import 'package:tech_taste/data/restaurant_data.dart';
+import 'package:tech_taste/model/restaurant.dart';
+import 'package:tech_taste/ui/_core/widgets/appbar.dart';
+import 'package:tech_taste/ui/home/widgets/category_widget.dart';
+import 'package:tech_taste/ui/home/widgets/restaurant_widget.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {

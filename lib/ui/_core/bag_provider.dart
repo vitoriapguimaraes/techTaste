@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/model/dish.dart';
+import 'package:tech_taste/model/dish.dart';
 
 class BagProvider extends ChangeNotifier {
   List<Dish> dishesOnBag = [];
