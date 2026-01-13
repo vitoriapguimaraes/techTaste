@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/ui/_core/app_colors.dart';
+import 'package:tech_taste/ui/_core/app_colors.dart';
 
 class CategoryWidget extends StatelessWidget {
   final String category;

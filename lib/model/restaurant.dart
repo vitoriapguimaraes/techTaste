@@ -1,4 +1,4 @@
-import 'package:myapp/model/dish.dart';
+import 'package:tech_taste/model/dish.dart';
 
 class Restaurant {
   String id;

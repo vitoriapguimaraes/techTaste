@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/model/restaurant.dart';
-import 'package:myapp/ui/restaurant/restaurant_screen.dart';
+import 'package:tech_taste/model/restaurant.dart';
+import 'package:tech_taste/ui/restaurant/restaurant_screen.dart';
 
 class RestaurantWidget extends StatelessWidget {
   final Restaurant restaurant;

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/model/restaurant.dart';
+import 'package:tech_taste/model/restaurant.dart';
 
 class RestaurantData extends ChangeNotifier {
   List<Restaurant> listRestaurant = [];
