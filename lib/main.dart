@@ -4,6 +4,7 @@ import 'package:tech_taste/ui/_core/app_theme.dart';
 import 'package:tech_taste/ui/_core/bag_provider.dart';
 import 'package:tech_taste/ui/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
