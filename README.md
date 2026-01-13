@@ -1,9 +1,9 @@
 # Tech Taste
 
 > Aplicativo mobile desenvolvido em Flutter para facilitar a experiência de delivery de comida, permitindo aos usuários explorar restaurantes, selecionar pratos do cardápio e realizar pedidos de forma intuitiva.  
-> Desenvolvido inicialmente na plataforma FireStudio Google.
+> Desenvolvido na plataforma FireStudio Google.
 
-<img src="https://github.com/vitoriapguimaraes/techTaste/blob/main/demo/software_view.gif?raw=true" alt="Demonstração do sistema" width="400"/>
+![Demonstração do sistema](https://github.com/vitoriapguimaraes/techTaste/blob/main/demo/navigation.gif)
 
 ## Funcionalidades Principais
 
