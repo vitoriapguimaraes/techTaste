@@ -107,7 +107,19 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               
-              SizedBox(height: 32.0),
+              // Footer
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 24.0),
+                child: Center(
+                  child: Text(
+                    "Desenvolvido por github.com/vitoriapguimaraes",
+                    style: AppTextStyles.caption.copyWith(fontSize: 11.0),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              
+              SizedBox(height: 16.0),
             ],
           ),
         ),
