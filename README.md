@@ -36,6 +36,14 @@ O projeto segue uma arquitetura organizada e escalável:
 
 O gerenciamento de estado é feito com **Provider**, permitindo que o carrinho de compras seja compartilhado entre as telas de forma reativa.
 
+## Documentação
+
+📚 **Documentação completa disponível:**
+
+- **[Documentação Técnica](DOCUMENTACAO_TECNICA.md)** - Estrutura de dados, fluxos de navegação, arquitetura de componentes e diagramas
+- **[Guia de Desenvolvimento](GUIA_DESENVOLVIMENTO.md)** - Exemplos práticos e referência rápida para desenvolvedores
+- **[Como Visualizar o App](COMO_VISUALIZAR.md)** - Instruções para rodar o projeto sem Flutter instalado
+
 ## Como Executar
 
 1. Clone o repositório:
