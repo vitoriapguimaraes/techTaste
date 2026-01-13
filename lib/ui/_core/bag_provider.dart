@@ -14,6 +14,14 @@ class BagProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  int get totalItems {
+    return dishesOnBag.length;
+  }
+
+  int get totalPrice {
+    return dishesOnBag.fold(0, (sum, dish) => sum + dish.price);
+  }
+
   clearBag() {
     dishesOnBag.clear();
     notifyListeners();
