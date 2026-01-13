@@ -3,13 +3,11 @@ import 'package:tech_taste/model/dish.dart';
 import 'package:tech_taste/ui/_core/app_colors.dart';
 import 'package:tech_taste/ui/_core/app_text_styles.dart';
 import 'package:tech_taste/ui/_core/bag_provider.dart';
+import 'package:tech_taste/ui/_core/widgets/web_constrained_box.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
     BagProvider bagProvider = Provider.of<BagProvider>(context);
     final itemsMap = bagProvider.getMapByAmount();
     final isEmpty = itemsMap.isEmpty;
@@ -27,27 +25,29 @@ class CheckoutScreen extends StatelessWidget {
             ),
         ],
       ),
-      body: isEmpty
-          ? _EmptyCart()
-          : Column(
-              children: [
-                // Lista de itens
-                Expanded(
-                  child: ListView.builder(
-                    padding: EdgeInsets.all(16.0),
-                    itemCount: itemsMap.keys.length,
-                    itemBuilder: (context, index) {
-                      Dish dish = itemsMap.keys.toList()[index];
-                      int quantity = itemsMap[dish]!;
-                      return _CartItem(dish: dish, quantity: quantity);
-                    },
+      body: WebConstrainedBox(
+        child: isEmpty
+            ? _EmptyCart()
+            : Column(
+                children: [
+                  // Lista de itens
+                  Expanded(
+                    child: ListView.builder(
+                      padding: EdgeInsets.all(16.0),
+                      itemCount: itemsMap.keys.length,
+                      itemBuilder: (context, index) {
+                        Dish dish = itemsMap.keys.toList()[index];
+                        int quantity = itemsMap[dish]!;
+                        return _CartItem(dish: dish, quantity: quantity);
+                      },
+                    ),
                   ),
-                ),
-                
-                // Rodapé com total
-                _CheckoutFooter(bagProvider: bagProvider),
-              ],
-            ),
+                  
+                  // Rodapé com total
+                  _CheckoutFooter(bagProvider: bagProvider),
+                ],
+              ),
+      ),
     );
   }
 }
