@@ -3,7 +3,7 @@
 > Aplicativo mobile desenvolvido em Flutter para facilitar a experiência de delivery de comida, permitindo aos usuários explorar restaurantes, selecionar pratos do cardápio e realizar pedidos de forma intuitiva.  
 > Desenvolvido inicialmente na plataforma FireStudio Google.
 
-<img src="https://github.com/vitoriapguimaraes/Flutter-TechTaste/blob/main/software_view.gif?raw=true" alt="Demonstração do sistema" width="400"/>
+<img src="https://github.com/vitoriapguimaraes/techTaste/blob/main/demo/software_view.gif?raw=true" alt="Demonstração do sistema" width="400"/>
 
 ## Funcionalidades Principais
 
@@ -41,7 +41,7 @@ O gerenciamento de estado é feito com **Provider**, permitindo que o carrinho d
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/vitoriapguimaraes/Flutter-TechTaste.git
+   git clone https://github.com/vitoriapguimaraes/techTaste.git
    ```
 
 2. Navegue até o diretório do projeto:
@@ -103,7 +103,7 @@ O gerenciamento de estado é feito com **Provider**, permitindo que o carrinho d
 
 ✅ Concluído
 
-> Veja as [issues abertas](https://github.com/vitoriapguimaraes/Flutter-TechTaste/issues) para sugestões de melhorias e próximos passos.
+> Veja as [issues abertas](https://github.com/vitoriapguimaraes/techTaste/issues) para sugestões de melhorias e próximos passos.
 
 ## Aprendizados
 
