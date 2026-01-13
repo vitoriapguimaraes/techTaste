@@ -8,6 +8,9 @@ import 'package:provider/provider.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     BagProvider bagProvider = Provider.of<BagProvider>(context);
     final itemsMap = bagProvider.getMapByAmount();
     final isEmpty = itemsMap.isEmpty;
